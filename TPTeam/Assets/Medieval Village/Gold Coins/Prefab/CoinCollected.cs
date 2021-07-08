@@ -21,7 +21,7 @@ public class CoinCollected : MonoBehaviour
 
     void Update()
     {
-        if (m_timer.GetTimer() <= 30)
+        if (m_timer.GetTimer() <= m_timer.GetTimerTillHint())
         {
             m_LineRenderer.SetPosition(0, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
             m_LineRenderer.SetPosition(1, transform.position);

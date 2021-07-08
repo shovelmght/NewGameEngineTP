@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] int MAX_TIMER_IN_SEC = 120;
+    [SerializeField] int m_MaxTimer = 120;
+    [SerializeField] int m_TimerTillGiveHint = 30;
 
     static float m_timer;
     TMPro.TextMeshProUGUI m_text;
     
     void Start()
     {
-        m_timer = MAX_TIMER_IN_SEC;
+        m_timer = m_MaxTimer;
         m_text = GetComponent<TMPro.TextMeshProUGUI>();
     }
 
@@ -33,5 +34,10 @@ public class Timer : MonoBehaviour
     public float GetTimer()
     {
         return m_timer;
+    }
+
+    public int GetTimerTillHint()
+    {
+        return m_TimerTillGiveHint;
     }
 }
