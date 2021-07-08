@@ -30,7 +30,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        [SerializeField] private AudioClip[] m_GoldPickUpSound;
+        [SerializeField] private AudioClip m_FailingDeathSound;
 
         private Camera m_Camera;
         private bool m_Jump;
@@ -287,12 +287,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //grounds = 1;
             }
 
-            if (other.CompareTag("GoldCoins"))
+            if (other.CompareTag("GroundLimit"))
             {
-                int RandomSoundIdx = Random.Range(0, m_GoldPickUpSound.Length);
-                m_AudioSource.clip = m_GoldPickUpSound[RandomSoundIdx];
+                m_AudioSource.clip = m_FailingDeathSound;
                 m_AudioSource.Play();
-                Destroy(other.gameObject);
             }
         }
 

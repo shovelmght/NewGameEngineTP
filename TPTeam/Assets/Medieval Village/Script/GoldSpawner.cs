@@ -5,12 +5,31 @@ using UnityEngine;
 public class GoldSpawner : MonoBehaviour
 {
     public Transform GoldPile;
+    [SerializeField] int MaxGoldPileSpawn = 5;
+
+    Transform[] ChildTransform;
+    List<int> RandomIntMemory = new List<int>();
 
     void Start()
     {
-        foreach (Transform child in transform)
+        ChildTransform = GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < MaxGoldPileSpawn; i++)
         {
-            Instantiate(GoldPile, child.position, Quaternion.identity);
+            Instantiate(GoldPile, ChildTransform[RandomWithoutDuplicate()].position, Quaternion.identity);
         }
+    }
+
+    int RandomWithoutDuplicate()
+    {
+        int RandomToReturn = Random.Range(0, ChildTransform.Length);
+
+        if (RandomIntMemory.Contains(RandomToReturn))
+        {
+            RandomWithoutDuplicate();
+        }
+
+        RandomIntMemory.Add(RandomToReturn);
+        return RandomToReturn;
     }
 }
