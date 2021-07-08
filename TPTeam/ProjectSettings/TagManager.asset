@@ -9,6 +9,7 @@ TagManager:
   - Fire
   - WaterFloor
   - GroundLimit
+  - Timer
   layers:
   - Default
   - TransparentFX

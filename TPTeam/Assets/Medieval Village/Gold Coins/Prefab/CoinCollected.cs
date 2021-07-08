@@ -8,11 +8,24 @@ public class CoinCollected : MonoBehaviour
 
     private AudioSource m_AudioSource;
     private MeshRenderer m_render;
+    LineRenderer m_LineRenderer;
+    Timer m_timer;
 
     void Start()
     {
+        m_timer = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
         m_render = GetComponent<MeshRenderer>();
         m_AudioSource = GetComponent<AudioSource>();
+        m_LineRenderer = GetComponent<LineRenderer>();
+    }
+
+    void Update()
+    {
+        if (m_timer.GetTimer() <= 30)
+        {
+            m_LineRenderer.SetPosition(0, GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
+            m_LineRenderer.SetPosition(1, transform.position);
+        }
     }
 
 
