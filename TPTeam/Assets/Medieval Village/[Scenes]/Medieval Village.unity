@@ -19086,7 +19086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aee8244ce2be08429ea1aabe607fc34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_TIMER_IN_SEC: 40
+  MAX_TIMER_IN_SEC: 120
 --- !u!4 &1095227111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6020bd5b39392474eb9b0c3cef2151e9, type: 3}
