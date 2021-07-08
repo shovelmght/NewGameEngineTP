@@ -20,7 +20,14 @@ public class Timer : MonoBehaviour
     void Update()
     {
         m_timer -= Time.deltaTime;
-        m_text.text = Mathf.Floor(m_timer / 60) + ":" + Mathf.RoundToInt(m_timer % 60);
+        if (Mathf.RoundToInt(m_timer % 60) < 10)
+        {
+            m_text.text = Mathf.Floor(m_timer / 60) + ":0" + Mathf.RoundToInt(m_timer % 60);
+        }
+        else
+        {
+            m_text.text = Mathf.Floor(m_timer / 60) + ":" + Mathf.RoundToInt(m_timer % 60);
+        }
     }
 
     public float GetTimer()
