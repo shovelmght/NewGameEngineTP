@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 33018419469632608}
   - component: {fileID: 23458456864992360}
   - component: {fileID: 3646897487838058849}
-  - component: {fileID: 1946906996770196098}
   - component: {fileID: -885208819705669769}
   - component: {fileID: 3841472604413288865}
+  - component: {fileID: 1252801062134423984}
   m_Layer: 0
   m_Name: GoldCoins
   m_TagString: GoldCoins
@@ -98,22 +98,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.058852464, y: 0.020218275, z: 0.06506889}
   m_Center: {x: 0.0032892236, y: 0.010496559, z: 0.0014966959}
---- !u!114 &1946906996770196098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1950871307682000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b72dc7599df142d4ba7772a9964ad71a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_GoldPickUpSound:
-  - {fileID: 8300000, guid: 7c18bcc44465ab54c82acf72dccf8bce, type: 3}
-  - {fileID: 8300000, guid: 4f378306727f46f4ca582a0d310eb741, type: 3}
-  - {fileID: 8300000, guid: 0f9b18f51060a0140b97a6f68461fc69, type: 3}
 --- !u!82 &-885208819705669769
 AudioSource:
   m_ObjectHideFlags: 0
@@ -308,3 +292,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &1252801062134423984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950871307682000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8451ec94b8eeef246abde97972f8bea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GoldPickUpSound: []

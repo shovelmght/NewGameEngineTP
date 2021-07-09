@@ -8,6 +8,7 @@ public class LVLMan : MonoBehaviour
     private float endTimerForest = 17;
     private float timerTown = 0;
     private float endTimerTown = 10;
+    public float gold;
     public FadeImg ScreenFall;
     public GameObject screenFallObj;
     public FadeTxt txtRestart;
@@ -65,6 +66,13 @@ public class LVLMan : MonoBehaviour
             ambientSoundTown[0] = audioSourceTownSonor.clip;
         }
         timerTown += Time.deltaTime;
+    }
+
+
+    public void AddGold()
+    {
+        gold += 10;
+        //if(gold => )
     }
 
     public void Fall()
