@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-namespace UnityStandardAssets.Utility
+namespace UnityStandardAssets.Characters.FirstPerson
 {
     [Serializable]
     public class CurveControlledBob

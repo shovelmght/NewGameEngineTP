@@ -3,13 +3,18 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityStandardAssets.Characters.FirstPerson;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
+ 
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
+        public LVLMan lm;
+        public GameObject LmObj;
+
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -47,9 +52,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
         private int grounds = 0;
 
+
         // Use this for initialization
         private void Start()
         {
+            LmObj = GameObject.FindGameObjectWithTag("LevelManager");
+            lm = LmObj.GetComponent<LVLMan>();
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -62,8 +70,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MouseLook.Init(transform, m_Camera.transform);
         }
 
-
-        // Update is called once per frame
         private void Update()
         {
             RotateView();
@@ -86,9 +92,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-
             IsGrounded();
-     
         }
 
 
@@ -115,7 +119,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x * speed;
             m_MoveDir.z = desiredMove.z * speed;
 
-
             if (m_CharacterController.isGrounded)
             {
                 m_MoveDir.y = -m_StickToGroundForce;
@@ -139,14 +142,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_MouseLook.UpdateCursorLock();
         }
-
-
         private void PlayJumpSound()
         {
             m_AudioSource.clip = m_JumpSound;
             m_AudioSource.Play();
         }
-
 
         private void ProgressStepCycle(float speed)
         {
@@ -165,7 +165,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             PlayFootStepAudio();
         }
-
 
         private void PlayFootStepAudio()
         {
@@ -197,9 +196,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_FootstepWater[n] = m_FootstepWater[0];
                 m_FootstepWater[0] = m_AudioSource.clip;
             }
-
         }
-
 
         private void UpdateCameraPosition(float speed)
         {
@@ -233,11 +230,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             bool waswalking = m_IsWalking;
 
-#if !MOBILE_INPUT
+        #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
-#endif
+        #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
@@ -257,12 +254,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-
         private void RotateView()
         {
             m_MouseLook.LookRotation(transform, m_Camera.transform);
         }
-
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
@@ -282,34 +277,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("RockFloor"))
-            {
-                //grounds = 1;
-            }
-
             if (other.CompareTag("GroundLimit"))
             {
                 m_AudioSource.clip = m_FailingDeathSound;
                 m_AudioSource.Play();
+                lm.Fall();
+                
             }
         }
-
-        //void OnTriggerStay(Collider other)
-        //{
-        //    if (other.CompareTag("RockFloor"))
-        //    {
-        //        grounds = 1;
-        //    }
-        //    else
-        //    {
-        //        grounds = 0;
-        //    }
-              
-        //}
-
-        void OnTriggerExit(Collider other)
+        public void SetCursorLock(bool OnOff)
         {
-            //grounds = 0;
+            m_MouseLook.SetCursorLock(OnOff);
         }
 
         private bool IsGrounded()
@@ -321,24 +299,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if(Info.collider.tag =="RockFloor")
                 {
                     grounds = 1;
-                    Debug.Log("1111");
                 }
                 else if(Info.collider.tag == "WaterFloor")
                 {
                     grounds = 2;
-                    Debug.Log("22222");
                 }
                 else
                 {
                     grounds = 0;
-                    Debug.Log(Info.GetType());
                 }
                 return true;
-
             }
             else
             {
-                Debug.Log("aaaaaaaaaaa");
                 return false;
             }
         }

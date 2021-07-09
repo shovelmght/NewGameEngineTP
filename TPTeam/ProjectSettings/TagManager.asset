@@ -10,6 +10,10 @@ TagManager:
   - WaterFloor
   - GroundLimit
   - Timer
+  - FadeWin
+  - FadeFall
+  - LevelManager
+  - UIRestart
   layers:
   - Default
   - TransparentFX
