@@ -6418,6 +6418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d984e27b9e4f5a4790ab86fc516fec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gold: 0
   ScreenFall: {fileID: 0}
   screenFallObj: {fileID: 0}
   txtRestart: {fileID: 0}
@@ -19506,6 +19507,7 @@ GameObject:
   - component: {fileID: 1094942158}
   - component: {fileID: 1094942157}
   - component: {fileID: 1094942159}
+  - component: {fileID: 1094942160}
   m_Layer: 5
   m_Name: Timer(Txt)
   m_TagString: Timer
@@ -19636,9 +19638,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094942155}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8aee8244ce2be08429ea1aabe607fc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MaxTimer: 120
+  m_TimerTillGiveHint: 30
+--- !u!114 &1094942160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094942155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b793a53395a344ea26d707a3a5ffa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxTimer: 120

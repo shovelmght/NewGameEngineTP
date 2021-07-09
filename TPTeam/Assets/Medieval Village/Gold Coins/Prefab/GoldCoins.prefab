@@ -304,4 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8451ec94b8eeef246abde97972f8bea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GoldPickUpSound: []
+  m_GoldPickUpSound:
+  - {fileID: 8300000, guid: 7c18bcc44465ab54c82acf72dccf8bce, type: 3}
+  - {fileID: 8300000, guid: 4f378306727f46f4ca582a0d310eb741, type: 3}
+  - {fileID: 8300000, guid: 0f9b18f51060a0140b97a6f68461fc69, type: 3}

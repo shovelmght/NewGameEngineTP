@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Medieval Village/[Scenes]/MainMenu.unity
+- path: Assets/Medieval Village/[Scenes]/Medieval Village.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
